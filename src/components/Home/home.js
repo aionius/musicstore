@@ -1,10 +1,10 @@
 import React from 'react';
 
+import NewsSlider from '../widgets/MusicSlider/slider';
+
 const Home = () => {
     return (
-        <div>
-            Home
-        </div>
+        <NewsSlider />
     );
 }
 
