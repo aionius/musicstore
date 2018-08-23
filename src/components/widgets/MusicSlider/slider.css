@@ -27,4 +27,6 @@
     font-weight: 200;
     font-size: 28px;
     box-sizing: border-box;
+    display: inline;
+    float: left;
 }

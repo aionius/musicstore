@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 import SliderTemplate from './slider_template';
+import { URL } from '../../../config';
 
 class MusicSlider extends Component {
     state = {
@@ -9,9 +10,9 @@ class MusicSlider extends Component {
     }
 
     componentWillMount() {
-        axios.get(`https://itunes.apple.com/search?term=goodbye&country=us`)
+        axios.get(`${URL}/search?term=goodbye&country=us&limit=5`)
             .then(response => {
-                console.log(response.data.results);
+                // console.log(response.data.results);
                 this.setState({
                     music: response.data.results
                 })

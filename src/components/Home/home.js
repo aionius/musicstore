@@ -1,10 +1,16 @@
 import React from 'react';
 
-import NewsSlider from '../widgets/MusicSlider/slider';
+import MusicSlider from '../widgets/MusicSlider/slider';
+import MusicList from '../widgets/MusicList/musicList';
 
 const Home = () => {
     return (
-        <NewsSlider />
+        <div>
+            <MusicSlider />
+            <MusicList 
+                type="card"
+                loadmore={true}/>
+        </div>
     );
 }
 
