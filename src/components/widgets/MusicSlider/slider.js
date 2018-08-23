@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 import SliderTemplate from './slider_template';
-import { URL } from '../../../config';
+import { URL, LASTFM_API_KEY, LASTFM_URL } from '../../../config';
 
 class MusicSlider extends Component {
     state = {
@@ -19,6 +19,17 @@ class MusicSlider extends Component {
             })
             .catch(error => {
                 console.log("Error: " + error);
+            })
+        
+            
+        console.log(LASTFM_URL);
+        console.log(LASTFM_API_KEY);
+        axios.get(`${LASTFM_URL}method=track.search&track=Believe&api_key=${LASTFM_API_KEY}&format=json`)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
             })
     }
 
