@@ -14,8 +14,7 @@ const SliderTemplate = (props) => {
         slidesToShow: 1,
         slidesToScroll: 1
     }
-
-    template = props.musicData.map((item,i) => {
+    template = props.topTracksData.map((item, i) => {
         return (
             <div key={i}>
                 <div className={styles.featured_item}>
@@ -23,22 +22,24 @@ const SliderTemplate = (props) => {
                         style={{
                             background: `url(${item.image[3]['#text']})`,
                         }}>
-                        
                     </div>
                     <div className={styles.featured_caption}>
-                        {/* <img src={item.artworkUrl100} alt={item.trackName} /> */}
-                        {item.artist}<br/>
+                        {item.artist.name}<br/>
                         "{item.name}"
                     </div>
                 </div>
             </div>
         );
-    })
+    });
 
     return (
+        <div>
+        <div className={styles.todayhits}>Today's Top Hits</div>
         <Slick {...settings}>
+            
             {template}
         </Slick>
+        </div>
     );
 }
 

@@ -9,7 +9,9 @@ const Home = () => {
             <MusicSlider />
             <MusicList 
                 type="card"
-                loadmore={true}/>
+                loadmore={true}
+                limit={5}
+                page={1}/>
         </div>
     );
 }

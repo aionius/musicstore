@@ -11,7 +11,7 @@ const Footer = () => {
                 <img alt="music store" src="/images/logo.png"/>
            </Link>
            <div className={styles.right}>
-                @MusicStor {CURRENT_YEAR}. All rights reserved.               
+                @MusicStore {CURRENT_YEAR}. All rights reserved.               
            </div>
        </div>
     );

@@ -15,21 +15,9 @@ const SiteNavItems = () => {
         },
         {
             type: style.option,
-            icon: 'pied-piper-alt',
-            text: 'Albums',
-            link: '/albums'
-        },
-        {
-            type: style.option,
             icon: 'user',
-            text: 'Artist',
-            link: '/artist'
-        },
-        {
-            type: style.option,
-            icon: 'renren',
-            text: 'Genre',
-            link: '/genre'
+            text: 'Artists',
+            link: '/artists'
         }
     ];
 

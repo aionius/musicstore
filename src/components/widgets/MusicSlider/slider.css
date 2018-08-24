@@ -30,3 +30,11 @@
     display: inline;
     float: left;
 }
+
+.todayhits {
+    text-align: center;
+    margin: 20px;
+    color: #353535;
+    font-weight: bold;
+    font-size: 21px;
+}

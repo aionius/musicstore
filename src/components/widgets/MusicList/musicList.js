@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // import { Link } from 'react-router-dom';
 import axios from 'axios';
-import FontAwesome from 'react-fontawesome';
 
 import {  LASTFM_URL, LASTFM_API_KEY } from '../../../config';
-import styles from './musicList.css';
 import Button from '../Buttons/buttons';
+import MusicListTemplate from '../MusicList/musicList_template';
 
 class MusicList extends Component {
 
     state = {
         items: [],
         musicItems: [],
-        page: 1
+        page: this.props.page
     }
 
     componentDidMount() {
@@ -21,11 +19,11 @@ class MusicList extends Component {
     }
 
     request = () => {
-        console.log(this.state.page);
-        axios.get(`${LASTFM_URL}method=track.search&track=Believe&limit=5&page=${this.state.page}&api_key=${LASTFM_API_KEY}&format=json`)
+        axios.get(`${LASTFM_URL}method=chart.gettoptracks&limit=${this.props.limit}&page=${this.state.page}&api_key=${LASTFM_API_KEY}&format=json`)
             .then(response => {
                 this.setState({
-                    musicItems: [...response.data.results.trackmatches.track]
+                    musicItems: response.data.tracks.track,
+                    page: this.state.page + 1
                 })
             })
             .catch(errors => {
@@ -34,41 +32,14 @@ class MusicList extends Component {
     }
 
     loadMore = () => {
-        this.setState({
-            page: this.state.page + 1
-        })
         this.request();
     }
 
     renderMusicList = (type) => {
         let template = null;
-
         switch(type) {
             case('card'):
-                template = this.state.musicItems.map((item, i) => {
-                        return (
-                            <CSSTransition
-                                classNames={{
-                                    enter: styles.musicList_wrapper,
-                                    enterActive: styles.musicList_wrapper_active
-                                }}
-                                timeout={500}
-                                key={i}>
-                                <div>
-                                    <div className={styles.musicList_item} >
-                                        {/* <Link to={item.trackViewUrl}> */}
-                                            <img src={item.image[0]['#text']} alt={item.trackName} />
-                                            <span>
-                                                Artist: {item.artist}<br/>
-                                                Title: {item.name} <FontAwesome name="play-circle"/><br/>
-                                            </span>
-                                        {/* </Link> */}
-                                    </div>
-                                </div>
-                            </CSSTransition>
-                        );
-    
-                });
+                template = <MusicListTemplate data={this.state.musicItems} />
                 break;
             default:
                 template = null;
@@ -81,11 +52,7 @@ class MusicList extends Component {
     render() {
         return(
             <div>
-                <TransitionGroup
-                    component="div"
-                    className="list">
-                    { this.renderMusicList(this.props.type) }
-                </TransitionGroup>
+                { this.renderMusicList(this.props.type) }
                 <Button 
                     type="loadmore"
                     loadMore={() => this.loadMore()}

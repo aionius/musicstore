@@ -1,35 +1,30 @@
-.musicList_item {
-    border: 1px solid #f2f2f2;
+.musicListItem_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #d5d5d5;
     background: #fff;
-    /* margin-top: 0px; */
-    padding: 5px 5px 0 5px;
 }
 
-.musicList_item span {
-    padding: 5px 5px 0 5px;
+.musicListItem_wrapper h2 {
     font-size: 13px;
-    line-height: 21px;
-    /* margin: 5px 5px; */
     color: #525252;
-    display: inline-block;
 }
 
-.musicList_item img {
-    padding: 5px 5px 0 5px;
-    height: 50px;
-    width: 50px;
-    display: inline-block;
-    
+.left {
+    background-size: cover !important;
 }
 
-.musicList_wrapper {
-    box-sizing: border-box;
-    opacity: 0;
-    transform: translateX(-100%);
-    transition: all .5s ease-in;
+.left div {
+    width: 90px;
+    height: 90px;
+    background-size: 40px !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    /* background: url('/images/play.png'); */
 }
 
-.musicList_wrapper_active {
-    opacity: 1;
-    transform: translateX(0%);
+.right {
+    flex-grow: 1;
+    padding: 10px;
 }
