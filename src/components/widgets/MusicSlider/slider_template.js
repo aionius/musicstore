@@ -19,16 +19,16 @@ const SliderTemplate = (props) => {
         return (
             <div key={i}>
                 <div className={styles.featured_item}>
-                    {/* <div className={styles.featured_image}
+                    <div className={styles.featured_image}
                         style={{
-                            background: `url(${item.artworkUrl100})`,
+                            background: `url(${item.image[3]['#text']})`,
                         }}>
                         
-                    </div> */}
+                    </div>
                     <div className={styles.featured_caption}>
-                        <img src={item.artworkUrl100} alt={item.trackName} />
-                        {item.artistName}<br/>
-                        "{item.trackName}"
+                        {/* <img src={item.artworkUrl100} alt={item.trackName} /> */}
+                        {item.artist}<br/>
+                        "{item.name}"
                     </div>
                 </div>
             </div>

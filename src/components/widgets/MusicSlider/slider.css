@@ -11,8 +11,8 @@
 }
 
 .featured_image {
-    width: 150px;
-    height: 150px;
+    /* width: 150px; */
+    height: 330px;
     background-position: center;
     background-size: cover !important;
     background-repeat: no-repeat !important;

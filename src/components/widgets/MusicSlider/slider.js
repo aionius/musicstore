@@ -6,7 +6,8 @@ import { URL, LASTFM_API_KEY, LASTFM_URL } from '../../../config';
 
 class MusicSlider extends Component {
     state = {
-        music: []
+        music: [],
+        musicList: []
     }
 
     componentWillMount() {
@@ -20,13 +21,12 @@ class MusicSlider extends Component {
             .catch(error => {
                 console.log("Error: " + error);
             })
-        
             
-        console.log(LASTFM_URL);
-        console.log(LASTFM_API_KEY);
-        axios.get(`${LASTFM_URL}method=track.search&track=Believe&api_key=${LASTFM_API_KEY}&format=json`)
+        axios.get(`${LASTFM_URL}method=track.search&track=Believe&limit=5&api_key=${LASTFM_API_KEY}&format=json`)
             .then(response => {
-                console.log(response);
+                this.setState({
+                    musicList: response.data.results.trackmatches.track
+                })
             })
             .catch(error => {
                 console.log(error);
@@ -35,7 +35,10 @@ class MusicSlider extends Component {
 
     render() {
         return(
-            <SliderTemplate musicData={this.state.music}/>
+            <div>
+                {/* <SliderTemplate musicData={this.state.music}/> */}
+                <SliderTemplate musicData={this.state.musicList}/>
+            </div>
         );
     }
 } 
