@@ -19,6 +19,7 @@ class MusicList extends Component {
     }
 
     request = () => {
+        console.log(this.state)
         axios.get(`${LASTFM_URL}method=chart.gettoptracks&limit=${this.props.limit}&page=${this.state.page}&api_key=${LASTFM_API_KEY}&format=json`)
             .then(response => {
                 this.setState({
@@ -27,7 +28,7 @@ class MusicList extends Component {
                 })
             })
             .catch(errors => {
-
+                console.log(errors);
             });
     }
 

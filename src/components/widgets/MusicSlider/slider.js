@@ -10,7 +10,7 @@ class MusicSlider extends Component {
     }
 
     componentWillMount() {
-        axios.get(`${LASTFM_URL}method=chart.gettoptracks&limit=5&api_key=${LASTFM_API_KEY}&format=json`)
+        axios.get(`${LASTFM_URL}method=chart.gettoptracks&limit=5&page=1&api_key=${LASTFM_API_KEY}&format=json`)
             .then(response => {
                 this.setState({
                     topTracks: response.data.tracks.track
